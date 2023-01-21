@@ -1,2 +1,2 @@
 # ScoreSpace-Jam
- jam with maicol
+ gamejam with maicol
