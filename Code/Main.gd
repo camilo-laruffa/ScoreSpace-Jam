@@ -10,6 +10,8 @@ func _ready():
 	pass # Replace with function body.
 
 func _process(delta):
+	$Control/Label.text = str(Global.points)
+	if Global.combo % 10 == 0 : $Sound.play()
 	if get_tree().get_nodes_in_group("Enemy").size() < 16 :
 		var player_position = get_tree().get_nodes_in_group("Player")[0].position
 		var enemy = ENEMY.instance()

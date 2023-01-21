@@ -18,4 +18,10 @@ func _process(delta):
 	pass
 
 func die():
+	Global._set_audio(0)
+	var audio = Global.audio_player
+	get_parent().call_deferred("add_child", audio)
+	audio.play()
+	Global.combo += 1
+	Global.points += 1 * Global.combo
 	queue_free()
