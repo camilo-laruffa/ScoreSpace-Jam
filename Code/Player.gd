@@ -21,6 +21,7 @@ func _physics_process(delta):
 	rotation = get_global_mouse_position().angle_to_point(position) - PI/2
 	_manage_input()
 	velocity = move_and_slide(velocity)
+	if Input.is_action_pressed("dash"): velocity = move_and_slide(-get_global_mouse_position().direction_to(position) * SPEED*10)
 	pass
 
 func _manage_input():

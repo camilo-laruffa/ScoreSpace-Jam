@@ -11,8 +11,11 @@ func _ready():
 
 func _process(delta):
 	if get_tree().get_nodes_in_group("Enemy").size() < 16 :
+		var player_position = get_tree().get_nodes_in_group("Player")[0].position
 		var enemy = ENEMY.instance()
-		enemy.position.x = rng.randf_range(0, 1360)
+		enemy.position.x = rng.randf_range(player_position.x - 300, player_position.x - 1000)
+		if rng.randi_range(0,1) == 1 :
+			enemy.position.x = rng.randf_range(player_position.x + 300, player_position.x + 1000)
 		enemy.position.y = rng.randf_range(0, 768)
 		get_parent().call_deferred("add_child", enemy)
 	pass
