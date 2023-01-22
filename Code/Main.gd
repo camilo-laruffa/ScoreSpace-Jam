@@ -10,9 +10,9 @@ func _ready():
 	pass # Replace with function body.
 
 func _process(delta):
-	$Control/Label.text = str(Global.points)
-	if Global.combo % 10 == 0 : $Sound.play()
-	if get_tree().get_nodes_in_group("Enemy").size() < 16 :
+	$Control/ScoreLabel.text = str(Global.points)
+	if Global.combo % 2 == 0 && !$Sound.playing: $Sound.play()
+	if get_tree().get_nodes_in_group("Enemy").size() < 40 :
 		var player_position = get_tree().get_nodes_in_group("Player")[0].position
 		var enemy = ENEMY.instance()
 		enemy.position.x = rng.randf_range(player_position.x - 300, player_position.x - 1000)
@@ -20,4 +20,9 @@ func _process(delta):
 			enemy.position.x = rng.randf_range(player_position.x + 300, player_position.x + 1000)
 		enemy.position.y = rng.randf_range(0, 768)
 		get_parent().call_deferred("add_child", enemy)
+	var armas = get_tree().get_nodes_in_group("Arma")
+	if armas.size() > 100 : 
+		for arma in armas :
+			if arma.is_dropped :
+				arma.queue_free()
 	pass

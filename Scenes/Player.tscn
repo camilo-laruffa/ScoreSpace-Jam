@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Assets/Sprites/gamejam-maicol.png" type="Texture" id=1]
 [ext_resource path="res://Code/Player.gd" type="Script" id=2]
@@ -7,6 +7,10 @@
 [ext_resource path="res://Assets/Audio/IMCHARGINGMYLASER.wav" type="AudioStream" id=5]
 [ext_resource path="res://Assets/Sprites/charge_beam.png" type="Texture" id=6]
 [ext_resource path="res://Assets/Audio/singlelaser2.wav" type="AudioStream" id=7]
+[ext_resource path="res://Assets/Audio/OUCHMEDISPARARON.wav" type="AudioStream" id=8]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 52, 47 )
 
 [node name="Player" type="KinematicBody2D" groups=["Player"]]
 script = ExtResource( 2 )
@@ -32,11 +36,9 @@ texture = ExtResource( 3 )
 [node name="LaserSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
 
-[node name="EnemyDeath" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 5 )
-
 [node name="Pium" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 7 )
+volume_db = -7.866
 
 [node name="LaserTimer" type="Timer" parent="."]
 wait_time = 2.0
@@ -54,5 +56,16 @@ texture = ExtResource( 6 )
 stream = ExtResource( 5 )
 volume_db = -18.0
 
+[node name="Player_Catchbox" type="Area2D" parent="."]
+collision_mask = 10
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player_Catchbox"]
+shape = SubResource( 1 )
+
+[node name="DeathSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 8 )
+volume_db = -7.866
+
 [connection signal="timeout" from="LaserTimer" to="." method="_on_LaserTimer_timeout"]
 [connection signal="timeout" from="ChargeTimer" to="." method="_on_ChargeTimer_timeout"]
+[connection signal="area_entered" from="Player_Catchbox" to="." method="_on_Player_Catchbox_area_entered"]

@@ -33,10 +33,13 @@ position = Vector2( 442, 266 )
 [node name="Control" type="Control" parent="."]
 theme = ExtResource( 4 )
 
-[node name="Label" type="Label" parent="Control"]
-margin_left = 712.0
-margin_top = 34.0
-margin_right = 746.0
-margin_bottom = 89.0
+[node name="ScoreLabel" type="Label" parent="Control"]
+margin_left = 684.0
+margin_right = 718.0
+margin_bottom = 55.0
+grow_horizontal = 2
+grow_vertical = 2
 theme = ExtResource( 4 )
 text = "0"
+align = 1
+valign = 1
