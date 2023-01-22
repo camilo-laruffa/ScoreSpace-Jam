@@ -8,7 +8,7 @@ var POWER = 1
 var BOMBS = 2
 var LIVES = 3
 var SCORE = 0
-var speed 
+var speed
 var velocity = Vector2()
 const CD = 0.1
 var can_Shoot = true
@@ -37,10 +37,12 @@ func _manage_input(delta):
 	velocity = Vector2()
 	speed = SPEED
 		
-	if Input.is_action_just_pressed("shoot") && $ChargeTimer.is_stopped(): 
+	if Input.is_action_just_pressed("shoot") && $ChargeTimer.is_stopped():
 		_pium()
-	if Input.is_action_pressed("shoot"): 
+	if Input.is_action_pressed("shoot"):
 		if !$ChargeTimer.is_stopped():
+			if !$ChargeSound.playing:
+				$ChargeSound.play()
 			$Charge_Beam.visible = true
 			$Charge_Beam.scale.x += sin(time * 10) * delta * 30
 			$Charge_Beam.scale.y += sin(time * 10) * delta * 30
@@ -48,11 +50,13 @@ func _manage_input(delta):
 			$ChargeTimer.start()
 		speed = speed / 2
 		if !$LaserTimer.is_stopped():
-			if !$LaserSound.playing : 
+			$ChargeSound.stop()
+			if !$LaserSound.playing:
 				$LaserSound.play()
 			_shoot()
 		
 	if Input.is_action_just_released("shoot"):
+		$ChargeSound.stop()
 		$Charge_Beam.visible = false
 		$Charge_Beam.scale.x = 1
 		$Charge_Beam.scale.y = 1

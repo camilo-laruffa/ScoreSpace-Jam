@@ -4,7 +4,7 @@
 [ext_resource path="res://Code/Player.gd" type="Script" id=2]
 [ext_resource path="res://Assets/Sprites/laser.png" type="Texture" id=3]
 [ext_resource path="res://Assets/Audio/continouslaser.wav" type="AudioStream" id=4]
-[ext_resource path="res://Assets/Audio/OUCHMEDISPARARON.wav" type="AudioStream" id=5]
+[ext_resource path="res://Assets/Audio/IMCHARGINGMYLASER.wav" type="AudioStream" id=5]
 [ext_resource path="res://Assets/Sprites/charge_beam.png" type="Texture" id=6]
 [ext_resource path="res://Assets/Audio/singlelaser2.wav" type="AudioStream" id=7]
 
@@ -43,12 +43,16 @@ wait_time = 2.0
 one_shot = true
 
 [node name="ChargeTimer" type="Timer" parent="."]
-wait_time = 0.88
+wait_time = 0.8
 
 [node name="Charge_Beam" type="Sprite" parent="."]
 visible = false
 position = Vector2( 0, 33 )
 texture = ExtResource( 6 )
+
+[node name="ChargeSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+volume_db = -18.0
 
 [connection signal="timeout" from="LaserTimer" to="." method="_on_LaserTimer_timeout"]
 [connection signal="timeout" from="ChargeTimer" to="." method="_on_ChargeTimer_timeout"]
