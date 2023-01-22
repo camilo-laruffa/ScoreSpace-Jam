@@ -6,6 +6,7 @@ func _ready():
 	$HBoxContainer/VBoxContainer2/Highscore.text = str(Global.highscore)
 	$VBoxContainer/Continue.grab_focus()
 	Global.points = 0
+	Global.combo = 0
 	pass
 
 

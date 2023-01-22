@@ -11,13 +11,14 @@ func _ready():
 
 func _process(delta):
 	$Control/ScoreLabel.text = str(Global.points)
+	$Control/ComboLabel.text = str(Global.combo)
 	if Global.combo % 2 == 0 && !$Sound.playing: $Sound.play()
 	if get_tree().get_nodes_in_group("Enemy").size() < 40 :
 		var player_position = get_tree().get_nodes_in_group("Player")[0].position
 		var enemy = ENEMY.instance()
-		enemy.position.x = rng.randf_range(player_position.x - 300, player_position.x - 1000)
+		enemy.position.x = rng.randf_range(player_position.x - 400, player_position.x - 1100)
 		if rng.randi_range(0,1) == 1 :
-			enemy.position.x = rng.randf_range(player_position.x + 300, player_position.x + 1000)
+			enemy.position.x = rng.randf_range(player_position.x + 400, player_position.x + 1100)
 		enemy.position.y = rng.randf_range(0, 768)
 		get_parent().call_deferred("add_child", enemy)
 	var armas = get_tree().get_nodes_in_group("Arma")

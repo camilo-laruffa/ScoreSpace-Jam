@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/y2mate.com - Attack on Titan S2 OST  YOUSEEBIGGIRLTT Reiner and Berthold transformation theme.mp3-0f99ad2a586c79631b43d4eecaf23a79.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/y2mate.com - Attack on Titan S2 OST  YOUSEEBIGGIRLTT Reiner and Berthold transformation theme.mp3"
+dest_files=[ "res://.import/y2mate.com - Attack on Titan S2 OST  YOUSEEBIGGIRLTT Reiner and Berthold transformation theme.mp3-0f99ad2a586c79631b43d4eecaf23a79.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
